@@ -1,0 +1,54 @@
+#include<iostream>
+3 using namespace std;
+4
+5 class Complex{
+6 float real;
+7 float img;
+8 public:
+9 Complex(){
+10 real = 5.8;
+11 img = 7.5;
+12 }
+13 Complex(float r,float i){
+14 real = r;
+15 img = i;
+16 }
+17 friend void operator-(Complex& c);
+18 friend Complex operator+(Complex& d,Complex& e);
+19 friend Complex operator-(Complex& d,Complex& e);
+20 void displaycmp(){
+21 cout<<real<<" +i"<<"("<<img<<")"<<endl;
+22 }
+23 };
+24 void operator-(Complex& c){
+25 c.real = -(c.real);
+26 c.img = -(c.img);
+27 }
+28 Complex operator+(Complex& d,Complex& e){
+29 return Complex(d.real + e.real,d.img + e.img);
+30 }
+31 Complex operator-(Complex& d,Complex& e){
+32 return Complex(d.real - e.real,d.img - e.img);
+33 }
+34 int main(){
+35 float R,I;
+36 Complex A;
+37 cout<<" Complex Number(Before Overloading): ";
+38 A.displaycmp();
+39 -A;
+40 cout<<" Complex Number(After Overloading): ";
+41 A.displaycmp();
+42 cout<<" Enter real and imaginary value of Complex Number: "<<endl;
+43 cin>>R>> I;
+44 Complex C(R, I);
+45 cout<<" Enter real and imaginary value of Complex Number: "<<endl;
+46 cin>>R>> I;
+47 Complex B(R, I);
+48 Complex Sum = C + B;
+49 cout<<" Sum of two Complex numbers : ";
+50 Sum.displaycmp();
+51 Complex Diff = C - B;
+52 cout<<" Difference of two Complex numbers : ";
+53 Diff.displaycmp();
+54 return 0;
+}
