@@ -1,0 +1,99 @@
+#include <iostream>
+2 using namespace std;
+3
+4 class Election {
+5 protected:
+6 long int totalPeople;
+7 long int noOfWomen;
+8 long int noOfMen;
+9
+10 public:
+11 Election() {
+12 totalPeople = 0;
+13 noOfWomen = 0;
+14 noOfMen = 0;
+15 }
+16
+17 // Getter and Setter methods for the attributes
+18 long int getTotalPeople() {
+19 return totalPeople;
+20 }
+21
+22 void setTotalPeople(long int total) {
+23 totalPeople = total;
+24 }
+25
+26 long int getNoOfWomen() {
+27 return noOfWomen;
+28 }
+29
+30 void setNoOfWomen(long int women) {
+31 noOfWomen = women;
+32 }
+33
+34 long int getNoOfMen() {
+35 return noOfMen;
+36 }
+37
+38 void setNoOfMen(long int men) {
+39 noOfMen = men;
+40 }
+41 };
+42
+43 class GeneralElection : public Election {
+44 public:
+45 double calcVotePercentage(int partyA, int partyB) {
+46 return ((partyA + partyB) * 100) / totalPeople;
+47 }
+48
+49 double calcWomenVotePercentage(int womenVotes) {
+50 return (womenVotes * 100) / noOfWomen;
+51 }
+52
+53 double calcMenVotePercentage(int menVotes) {
+54 return (menVotes * 100) / noOfMen;
+55 }
+56 };
+57
+58 int main() {
+59 GeneralElection election;
+60
+61 // Input
+62 long int totalPeople, noOfWomen, noOfMen;
+63 int partyA, partyB, womenVotes, menVotes;
+64
+65 cout << "Enter the number of people: ";
+66 cin >> totalPeople;
+67 election.setTotalPeople(totalPeople);
+68
+69 cout << "Enter the number of women: ";
+70 cin >> noOfWomen;
+71 election.setNoOfWomen(noOfWomen);
+72
+73 cout << "Enter the number of men: ";
+74 cin >> noOfMen;
+75 election.setNoOfMen(noOfMen);
+76
+77 cout << "Enter the number of votes for Party A: ";
+78 cin >> partyA;
+79
+80 cout << "Enter the number of votes for Party B: ";
+81 cin >> partyB;
+82
+83 cout << "Enter the number of votes cast by women: ";
+84 cin >> womenVotes;
+85
+86 cout << "Enter the number of votes cast by men: ";
+87 cin >> menVotes;
+88
+89 // Calculate and print results
+90 double votePercentage = election.calcVotePercentage(partyA, partyB);
+91 double womenVotePercentage = election.calcWomenVotePercentage(womenVotes);
+92 double menVotePercentage = election.calcMenVotePercentage(menVotes);
+93
+94 cout << "Vote Percentage: " << votePercentage << "%" << endl;
+95 cout << "Women Vote Percentage: " << womenVotePercentage << "%" << endl;
+96 cout << "Men Vote Percentage: " << menVotePercentage << "%" << endl;
+97
+98 return 0;
+}
