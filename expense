@@ -1,0 +1,88 @@
+#include<iostream>
+4
+5 using namespace std;
+6
+7 class MonthlyExpense {
+8 private:
+9 double household_expense;
+10 double medical_expense;
+11
+12 public:
+13
+14 MonthlyExpense() : household_expense(0.0), medical_expense(0.0) {}
+15
+16
+17 void setHouseholdExpense(double expense) {
+18 household_expense = expense;
+19 }
+20
+21 void setMedicalExpense(double expense) {
+22 medical_expense = expense;
+23 }
+24
+25
+26 double getHouseholdExpense() const {
+27 return household_expense;
+28 }
+29
+30 double getMedicalExpense() const {
+31 return medical_expense;
+32 }
+33
+34
+35 double calculateMonthExpense() {
+36 return household_expense + medical_expense;
+37 }
+38
+39
+40 MonthlyExpense operator +(const MonthlyExpense& otherExpense) {
+41 MonthlyExpense result;
+42 result.household_expense = household_expense + otherExpense.household_expense;
+43 result.medical_expense = medical_expense + otherExpense.medical_expense;
+44 return result;
+45 }
+46
+47
+48 double calculateTotalExpense() {
+49 return household_expense + medical_expense;
+50 }
+51 };
+52
+53 int main() {
+54
+55 MonthlyExpense novemberExpense;
+56 double novemberHousehold, novemberMedical;
+57 cout << "Enter November Household Expense (Rs.): ";
+10/26/23, 6:52 PM class1.cpp
+localhost:52312/fc2dd736-7f53-46d8-b480-03d84cf8d25e/ 2/2
+58 cin >> novemberHousehold;
+59 cout << "Enter November Medical Expense (Rs.): ";
+60 cin >> novemberMedical;
+61 novemberExpense.setHouseholdExpense(novemberHousehold);
+62 novemberExpense.setMedicalExpense(novemberMedical);
+63
+64 double totalNovemberExpense = novemberExpense.calculateMonthExpense();
+65 cout << "Total November Expense: Rs." << totalNovemberExpense << endl;
+66
+67 MonthlyExpense decemberExpense;
+68 double decemberHousehold, decemberMedical;
+69 cout << "Enter December Household Expense (Rs.): ";
+70 cin >> decemberHousehold;
+71 cout << "Enter December Medical Expense (Rs.): ";
+72 cin >> decemberMedical;
+73 decemberExpense.setHouseholdExpense(decemberHousehold);
+74 decemberExpense.setMedicalExpense(decemberMedical);
+75
+76
+77 double totalDecemberExpense = decemberExpense.calculateMonthExpense();
+78 cout << "Total December Expense: Rs." << totalDecemberExpense << endl;
+79
+80
+81 MonthlyExpense totalExpense = novemberExpense + decemberExpense;
+82
+83
+84 double total = totalExpense.calculateTotalExpense();
+85 cout << "Total Expense for November and December: Rs." << total << endl;
+86
+87 return 0;
+88 }
