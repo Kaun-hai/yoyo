@@ -1,0 +1,61 @@
+#include <iostream>
+2 using namespace std;
+3
+4 class SportsTournament {
+5 public:
+6 // Function to calculate score for Cricket
+7 int calculateScore(int numSixers, int numFours, int numSingles) {
+8 return (numSixers * 6) + (numFours * 4) + numSingles;
+9 }
+10 // Function to calculate score for Carrom
+11 int calculateScore(int numWhite, int numBlack, bool hasRed) {
+12 int score = (numWhite * 2) + (numBlack * 1);
+13 if (hasRed) {
+14 score += 5;
+15 }
+16 return score;
+17 }
+18 // Function to calculate score for Basketball
+19 int calculateScore(int numGoals, int numFouls) {
+20 return numGoals - numFouls;
+21 }
+22 };
+23
+24 int main() {
+25 SportsTournament tournament;
+26 // Cricket
+27 int sixers, fours, singles;
+28 cout<<" CRICKET :"<<endl;
+29 cout << "Enter the number of sixers: ";
+30 cin >> sixers;
+31 cout << "Enter the number of fours: ";
+32 cin >> fours;
+33 cout << "Enter the number of singles: ";
+34 cin >> singles;
+35 int cricketScore = tournament.calculateScore(sixers, fours, singles);
+36 cout << "Cricket Score: " << cricketScore <<endl;
+37 // Carrom
+38 int numWhite, numBlack;
+39 bool hasRed;
+40 cout<<" CARROM :"<<endl;
+41 cout << "Enter the number of white pockets:";
+42 cin >> numWhite ;
+43 cout << "Enter the number of black pockets: ";
+44 cin >> numBlack;
+45 cout << "Does it have red pockets? (1 for Yes, 0 for No): ";
+46 cin >> hasRed;
+47 int carromScore = tournament.calculateScore(numWhite, numBlack, hasRed);
+48 cout << "Carrom Score: " << carromScore << endl;
+49 // Basketball
+50 int numGoals, numFouls;
+51 cout<<" BASKETBALL: "<<endl;
+52 cout << "Enter the number of goals : ";
+53 cin >> numGoals;
+54 cout << "Enter the number of fouls : ";
+55 cin >> numFouls;
+56 int basketballScore = tournament.calculateScore(numGoals, numFouls);
+57 cout << "Basketball Score: " << basketballScore <<
+58 endl;
+59
+60 return 0;
+61 }
