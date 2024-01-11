@@ -1,0 +1,87 @@
+#include <iostream>
+2 using namespace std;
+3
+4 class RuralManagement {
+5 protected:
+6 int acceptedSchemes;
+7
+8 public:
+9
+10 int getAcceptedSchemes()
+11 { return acceptedSchemes; }
+12
+13
+14 void setAcceptedSchemes(int Totalschemes, int RejectedSchemes) {
+15
+16 acceptedSchemes = Totalschemes - RejectedSchemes;
+17 }
+18
+19
+20 void calcNoOfSchemes(int noOfSchemes, int noOfSchemesRejected) {
+21 setAcceptedSchemes(noOfSchemes, noOfSchemesRejected);
+22 }
+23 };
+24
+25
+26 class RevenueManagement {
+27 protected:
+28 double totalRevenue;
+29
+30 public:
+31
+32 double getTotalRevenue()
+33 { return totalRevenue; }
+34
+35
+36 void setTotalRevenue(int noOfTerritories, double revenue) {
+37
+38 totalRevenue = noOfTerritories * revenue;
+39 }
+40
+41 void calcTotalRevenue(int noOfTerritories, double revenue) {
+42 setTotalRevenue(noOfTerritories, revenue);
+43 }
+44 };
+45
+46
+47 class SchemeManagement : public RuralManagement, public RevenueManagement {
+48 public:
+49
+50 double allotMoneyPerScheme() {
+51
+52 return getTotalRevenue() / getAcceptedSchemes();
+53 }
+54 };
+55
+56
+57 int main() {
+11/16/23, 7:45 PM class2.cpp
+localhost:60925/8b7a51c1-4c45-4647-90a9-553b082713ef/ 2/2
+58 SchemeManagement schemeManagement;
+59
+60
+61 int noOfTerritories, noOfSchemes, rejectedSchemes;
+62 double revenue;
+63
+64 cout << "Enter the number of territories: ";
+65 cin >> noOfTerritories;
+66
+67 cout << "Enter the revenue per territory: ";
+68 cin >> revenue;
+69
+70 cout << "Enter the total number of schemes: ";
+71 cin >> noOfSchemes;
+72
+73 cout << "Enter the number of rejected schemes: ";
+74 cin >> rejectedSchemes;
+75
+76
+77 schemeManagement.calcTotalRevenue(noOfTerritories, revenue);
+78 schemeManagement.calcNoOfSchemes(noOfSchemes, rejectedSchemes);
+79
+80
+81 double moneyPerScheme = schemeManagement.allotMoneyPerScheme();
+82 cout << "Money allotted per scheme: " << moneyPerScheme << endl;
+83
+84 return 0;
+85 }
