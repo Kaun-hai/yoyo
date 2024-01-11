@@ -1,0 +1,62 @@
+using namespace std; // Added the namespace std
+class Employee {
+private:
+int internID; // Changed data type to int
+string name;
+string workStatus;
+public:
+// Getters and setters for the private member variables
+int getInternID() {
+return internID;
+}
+void setInternID(int id) {
+internID = id;
+}
+string getName() {
+return name;
+}
+void setName(string employeeName) {
+name = employeeName;
+}
+string getWorkStatus() {
+return workStatus;
+}
+void setWorkStatus(string status) {
+workStatus = status;
+}
+// Public method to update the work status based on the number of days
+void updateStatus(int days) {
+if (days <= 30) {
+setWorkStatus("Programming Skill");
+} else if (days > 30 && days <= 50) {
+setWorkStatus("Advanced Algorithm");
+} else if (days > 50 && days <= 75) {
+setWorkStatus("Project Phase");
+} else if (days > 75) {
+setWorkStatus("Internship is over");
+}
+}
+};
+int main() {
+Employee intern;
+10/19/23, 2:43 PM Online Notepad
+https://onlinenotepad.org/notepad 2/2
+int id, days; // Changed data type of id to int
+string name;
+cout << "Enter Intern ID:";
+cin >> id;
+intern.setInternID(id);
+cout << "Enter Employee Name:";
+cin.ignore();
+getline(cin, name);
+intern.setName(name);
+cout << "Enter the number of working days of the employee:";
+cin >> days;
+// Update the status based on the number of days
+intern.updateStatus(days);
+// Get and print the updated work status
+cout << "Employee Name:" << intern.getName() << endl;
+cout << "Intern ID:" << intern.getInternID() << endl;
+cout << "Work Status:" << intern.getWorkStatus() << endl;
+return 0;
+}
