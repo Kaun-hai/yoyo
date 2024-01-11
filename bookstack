@@ -1,0 +1,56 @@
+#include<iostream>
+3 #include<string.h>
+4 using namespace std;
+5
+6 int main(){
+7 char Box[5][10];
+8 char BookNo[10];
+9 int top=-1,ch=0,i=0;
+10 do{
+11 cout<<"\n 1. Insert a book in Box ";
+12 cout<<"\n 2. Remove a book from Box ";
+13 cout<<"\n 3. Display book box ";
+14 cout<<"\n 4. Exit ";
+15 cout<<"\n Enter your choice: ";
+16 cin>>ch;
+17 switch (ch)
+18 {
+19 case 1:
+20 if(top>=4){
+21 cout<<"\n The box is full";
+22 }
+23 else{
+24 cout<<" \n Enter the book number: ";
+25 cin>>BookNo;
+26 top++;
+27 strcpy(Box[top],BookNo);
+28 }
+29 break;
+30 case 2:
+31 if(top==-1){
+32 cout<<"\n The box is empty ";
+33 }
+34 else{
+35 cout<<"\n Book removed from Box: "<<Box[top];
+36 top--;
+37 }
+38 break;
+39 case 3:
+40 if(top==-1){
+41 cout<<"\n The box is Empty";
+42 }
+43 else{
+44 cout<<"\n The books in the box: ";
+45 for(i=top;i>=0;i--){
+46 cout<<Box[i]<<" ";
+47 }
+48 }
+49 break;
+50 case 4:
+51 return 0;
+52 default:
+53 cout<<"\n Invalid option!!!";
+54 }
+55 }while(true);
+56 return 0;
+}
